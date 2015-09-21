@@ -32,6 +32,10 @@ echo bftest
 call %test%\testce2 bftest
 if errorlevel 1 goto done
 
+echo cmactest
+call %test%\testce2 cmactest
+if errorlevel 1 goto done
+
 echo sha1test
 call %test%\testce2 sha1test
 if errorlevel 1 goto done

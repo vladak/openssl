@@ -64,7 +64,7 @@ sub algorithm_tests
    my @tests = ( rsa_test, destest, ideatest, bftest, bntest, shatest, sha1test,
                  sha256t, sha512t, dsatest, md2test, md4test, md5test, mdc2test,
                  rc2test, rc4test, rc5test, randtest, rmdtest, dhtest, ecdhtest,
-                 ecdsatest, ectest, exptest, casttest, hmactest );
+                 ecdsatest, ectest, exptest, casttest, cmactest, hmactest );
 
    print( "\nRUNNING CRYPTO ALGORITHM TESTS:\n\n");
 

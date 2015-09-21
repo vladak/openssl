@@ -23,6 +23,10 @@ echo bftest
 bftest
 if errorlevel 1 goto done
 
+echo cmactest
+cmactest
+if errorlevel 1 goto done
+
 echo sha1test
 sha1test
 if errorlevel 1 goto done

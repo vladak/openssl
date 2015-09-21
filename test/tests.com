@@ -53,7 +53,7 @@ $	    tests := -
 	test_des,test_idea,test_sha,test_md4,test_md5,test_hmac,-
 	test_md2,test_mdc2,test_wp,-
 	test_rmd,test_rc2,test_rc4,test_rc5,test_bf,test_cast,-
-	test_rand,test_bn,test_ec,test_ecdsa,test_ecdh,-
+	test_cmac,test_rand,test_bn,test_ec,test_ecdsa,test_ecdh,-
 	test_enc,test_x509,test_rsa,test_crl,test_sid,-
 	test_gen,test_req,test_pkcs7,test_verify,test_dh,test_dsa,-
 	test_ss,test_ca,test_engine,test_evp,test_evp_extra,test_ssl,test_tsa,-
@@ -84,6 +84,7 @@ $	RC4TEST :=		rc4test
 $	RC5TEST :=		rc5test
 $	BFTEST :=		bftest
 $	CASTTEST :=		casttest
+$	CMACTEST :=		cmactest
 $	DESTEST :=		destest
 $	RANDTEST :=		randtest
 $	DHTEST :=		dhtest
@@ -158,6 +159,9 @@ $	mcr 'texe_dir''bftest'
 $	return
 $ test_cast:
 $	mcr 'texe_dir''casttest'
+$	return
+$ test_cmac:
+$	mcr 'texe_dir''cmactest'
 $	return
 $ test_rc2:
 $	mcr 'texe_dir''rc2test'
