@@ -53,6 +53,7 @@ RC4TEST=	rc4test
 RC5TEST=	rc5test
 BFTEST=		bftest
 CASTTEST=	casttest
+CMACTEST=	cmactest
 DESTEST=	destest
 GOST2814789TEST=gost2814789test
 RANDTEST=	randtest
@@ -97,7 +98,8 @@ EXE=	$(NPTEST)$(EXE_EXT) $(BNTEST)$(EXE_EXT) $(ECTEST)$(EXE_EXT) \
 	$(SRPTEST)$(EXE_EXT) $(V3NAMETEST)$(EXE_EXT) \
 	$(HEARTBEATTEST)$(EXE_EXT) $(P5_CRPT2_TEST)$(EXE_EXT) \
 	$(CONSTTIMETEST)$(EXE_EXT) $(VERIFYEXTRATEST)$(EXE_EXT) \
-	$(CLIENTHELLOTEST)$(EXE_EXT) $(PACKETTEST)$(EXE_EXT)
+	$(CLIENTHELLOTEST)$(EXE_EXT) $(PACKETTEST)$(EXE_EXT) \
+	$(CMACTEST)$(EXE_EXT)
 
 # $(METHTEST)$(EXE_EXT)
 
@@ -113,7 +115,7 @@ OBJ=	$(NPTEST).o $(BNTEST).o $(ECTEST).o \
 	$(EVPTEST).o $(EVPEXTRATEST).o $(IGETEST).o $(JPAKETEST).o $(V3NAMETEST).o \
 	$(GOST2814789TEST).o $(HEARTBEATTEST).o $(P5_CRPT2_TEST).o \
 	$(CONSTTIMETEST).o $(VERIFYEXTRATEST).o $(CLIENTHELLOTEST).o \
-	$(PACKETTEST).o testutil.o
+	$(PACKETTEST).o $(CMACTEST).o testutil.o
 
 SRC=	$(NPTEST).c $(BNTEST).c $(ECTEST).c \
 	$(ECDSATEST).c $(ECDHTEST).c $(GMDIFFTEST).c $(PBELUTEST).c $(IDEATEST).c \
@@ -126,7 +128,7 @@ SRC=	$(NPTEST).c $(BNTEST).c $(ECTEST).c \
 	$(EVPTEST).c $(EVPEXTRATEST).c $(IGETEST).c $(JPAKETEST).c $(V3NAMETEST).c \
 	$(GOST2814789TEST).c $(HEARTBEATTEST).c $(P5_CRPT2_TEST).c \
 	$(CONSTTIMETEST).c $(VERIFYEXTRATEST).c $(CLIENTHELLOTEST).c \
-	$(PACKETTEST).c testutil.c
+	$(PACKETTEST).c $(CMACTEST).c testutil.c
 
 HEADER=	testutil.h
 
@@ -289,6 +291,9 @@ $(BFTEST)$(EXE_EXT): $(BFTEST).o $(DLIBCRYPTO)
 $(CASTTEST)$(EXE_EXT): $(CASTTEST).o $(DLIBCRYPTO)
 	@target=$(CASTTEST); $(BUILD_CMD)
 
+$(CMACTEST)$(EXE_EXT): $(CMACTEST).o $(DLIBCRYPTO)
+	@target=$(CMACTEST); $(BUILD_CMD)
+
 $(RC4TEST)$(EXE_EXT): $(RC4TEST).o $(DLIBCRYPTO)
 	@target=$(RC4TEST); $(BUILD_CMD)
 
@@ -415,6 +420,8 @@ clienthellotest.o: ../include/openssl/ssl3.h ../include/openssl/stack.h
 clienthellotest.o: ../include/openssl/symhacks.h ../include/openssl/tls1.h
 clienthellotest.o: ../include/openssl/x509.h ../include/openssl/x509_vfy.h
 clienthellotest.o: clienthellotest.c
+cmactest.o: ../include/openssl/engine.h ../include/openssl/evp.h
+cmactest.o: ../include/openssl/cmac.h cmactest.c
 constant_time_test.o: ../e_os.h ../include/internal/constant_time_locl.h
 constant_time_test.o: ../include/openssl/e_os2.h
 constant_time_test.o: ../include/openssl/opensslconf.h constant_time_test.c
