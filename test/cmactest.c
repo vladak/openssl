@@ -4,7 +4,7 @@
  * (corrected version of Appendix D of Special Publication 800-38B, which
  * specifies examples for the CMAC authentication mode)
  *
- * Usage: cmac-check <engine_name>
+ * Usage: cmactest [engine_name]
  *
  * Run and check for program exit code: if 0 it succeeded, otherwise failed.
  *
